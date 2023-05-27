@@ -1,65 +1,92 @@
-#!/usr/bin/python3
-#lets get a tarot reading from an ai
+# let's get a tarot reading from an ai
 
-import random
+import sys, time, random
+from math import isnan
 import openai
 
-# Set up OpenAI API credentials
-openai.api_key = 'YOUR_OPENAI_API_KEY'
+def slow_print(str):
+   for c in str:
+     sys.stdout.write(c)
+     sys.stdout.flush()
+     time.sleep(3./90)
 
-# Prompt for tarot card draw
-prompt = """
-You are about to pull three tarot cards from an entire tarot deck. Please focus on your question or situation.
+# fill out the card deck
+def gen_deck():
+    tarot_deck = [
+        "The Fool", "The Magician", "The High Priestess", "The Empress", "The Emperor", "The Hierophant",
+        "The Lovers", "The Chariot", "Strength", "The Hermit", "Wheel of Fortune", "Justice", "The Hanged Man",
+        "Death", "Temperance", "The Devil", "The Tower", "The Star", "The Moon", "The Sun", "Judgement", "The World",
+    ]
+    for suit in ["Wands", "Cups", "Swords", "Pentacles"]:
+        for entry in ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"]:
+            tarot_deck.append(f"{entry} of {suit}")
+        for entry in ["Page", "Knight", "Queen", "King"]:
+            tarot_deck.append(f"{entry} of {suit}")
+    return tarot_deck
 
-Card 1:
-Card 2:
-Card 3:
+# load the api key from a file
+def load_api_key(filename):
+    with open(filename, "r") as f:
+        OPENAI_API_KEY = f.read().strip()
+    openai.api_key = OPENAI_API_KEY
 
-Interpretation:
-"""
+# generate interpretation
+def generate_interpretation(query, cards):
+    # prompts for tarot card draw
+    prompt_basis = 'My tarot query: "%s" I drew: "%s."\
+        Here is a brief interpretation of this reading in under 100 words, including 3 single-word motivations.'
+    prompt = prompt_basis%(query, ", ".join(cards))
 
-# Generate interpretation using ChatGPT
-def generate_interpretation(cards):
+    max_tokens = max(100 * len(cards), 400)
+    
     response = openai.Completion.create(
         engine="text-davinci-003",
-        prompt=prompt + "\n".join(cards),
-        max_tokens=300,
+        prompt=prompt,
+        max_tokens=max_tokens,
         n=1,
         stop=None,
-        temperature=0.7,
+        temperature=0.65,
         top_p=1.0,
         frequency_penalty=0.0,
         presence_penalty=0.0
     )
     return response.choices[0].text.strip()
 
-# Full deck of tarot cards
-tarot_deck = [
-    "The Fool", "The Magician", "The High Priestess", "The Empress", "The Emperor", "The Hierophant",
-    "The Lovers", "The Chariot", "Strength", "The Hermit", "Wheel of Fortune", "Justice", "The Hanged Man",
-    "Death", "Temperance", "The Devil", "The Tower", "The Star", "The Moon", "The Sun", "Judgement", "The World",
-    "Ace of Wands", "Two of Wands", "Three of Wands", "Four of Wands", "Five of Wands", "Six of Wands",
-    "Seven of Wands", "Eight of Wands", "Nine of Wands", "Ten of Wands", "Page of Wands", "Knight of Wands",
-    "Queen of Wands", "King of Wands", "Ace of Cups", "Two of Cups", "Three of Cups", "Four of Cups",
-    "Five of Cups", "Six of Cups", "Seven of Cups", "Eight of Cups", "Nine of Cups", "Ten of Cups",
-    "Page of Cups", "Knight of Cups", "Queen of Cups", "King of Cups", "Ace of Swords", "Two of Swords",
-    "Three of Swords", "Four of Swords", "Five of Swords", "Six of Swords", "Seven of Swords",
-    "Eight of Swords", "Nine of Swords", "Ten of Swords", "Page of Swords", "Knight of Swords",
-    "Queen of Swords", "King of Swords", "Ace of Pentacles", "Two of Pentacles", "Three of Pentacles",
-    "Four of Pentacles", "Five of Pentacles", "Six of Pentacles", "Seven of Pentacles", "Eight of Pentacles",
-    "Nine of Pentacles", "Ten of Pentacles", "Page of Pentacles", "Knight of Pentacles", "Queen of Pentacles",
-    "King of Pentacles"
-]
+# prompt the user for a number of cards to draw
+def prompt_num_cards():
+    num_cards = 0
+    while num_cards <= 0 or num_cards > 78 or isnan(num_cards):
+        slow_print("\nHow many cards would you like to draw?\n\t")
+        num_cards = int(input())
+        if num_cards > 78:
+            slow_print("Tarot decks only have 78 cards.")
+        elif num_cards <= 0:
+            slow_print("Please enter a positive number of cards.")
+        elif isnan(num_cards):
+            slow_print("Please enter a number between 1 and 78.")
+    return num_cards
 
-# Prompt user to pull three tarot cards
-cards = random.sample(tarot_deck, 3)
+# pull the cards and reverse them randomly
+def pull_cards(num_cards):
+    tarot_deck = gen_deck()
+    cards = random.sample(tarot_deck, num_cards)
+    for i in range(0, num_cards):
+        if random.random() > 0.5:
+            cards[i] = cards[i] + " (reversed)"
+    return cards
 
-# Generate interpretation
-interpretation = generate_interpretation(cards)
+def full_reading():
+    slow_print("\nWelcome to your personal tarot reader.\n")
+    load_api_key(".key")
+    num_cards = prompt_num_cards()
+    cards = pull_cards(num_cards)
+    slow_print("\nWhat is your query?\n\t")
+    query = input()
+    interpretation = generate_interpretation(query, cards)
+    for i, card in enumerate(cards):
+        slow_print(f"\nCard {i+1}: {card}\n")
+    slow_print(f"\n{interpretation}\n\nPlease take care.\n")
 
-# Print the card draw and interpretation
-print("Card Draw:")
-for i, card in enumerate(cards):
-    print(f"Card {i+1}: {card}")
-print("\nInterpretation:")
-print(interpretation)
+# implementing name guarding. it's an ancient technique, but still commonly useful
+if __name__ == '__main__':
+    full_reading()
