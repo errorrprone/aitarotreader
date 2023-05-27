@@ -12,10 +12,11 @@ python3 reader.py
 enjoy :-) 
 
 example:
+
 Card Draw:
-Card 1: Four of Pentacles
-Card 2: Eight of Swords
-Card 3: Justice
+Card 1: The Hierophant
+Card 2: Knight of Pentacles
+Card 3: Ace of Cups
 
 Interpretation:
-This reading suggests that you are feeling stuck in a situation, and you may be feeling trapped or restricted. You may be feeling trapped by your own thoughts and beliefs, and this could be causing you to feel powerless. However, this is a time to take a step back and reassess the situation objectively. The Justice card is showing that you need to make a decision based on truth and fairness. This could mean taking a closer look at the facts, or considering how your actions may affect other
+The Hierophant indicates that you are being asked to look at what is accepted and traditional, and to consider the value of learning from a mentor or guide. The Knight of Pentacles is a sign of hard work and dedication to a project, showing that you need to be patient and steady in your approach. Finally, the Ace of Cups indicates that a new emotion or feeling will come into your life, bringing with it a sense of joy, love, and contentment.
