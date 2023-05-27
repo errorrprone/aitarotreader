@@ -1,6 +1,10 @@
 # aitarotreader
 use chatgpt to interpret tarot cards
 
+Get your api key for free from https://platform.openai.com/account/api-keys
+
+Edit reader.py and input your api key before running the program.
+
 chmod u+x reader.py
 
 python3 reader.py
