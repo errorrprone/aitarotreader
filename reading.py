@@ -23,7 +23,7 @@ def generate_interpretation(cards):
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt=prompt + "\n".join(cards),
-        max_tokens=100,
+        max_tokens=300,
         n=1,
         stop=None,
         temperature=0.7,
