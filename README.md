@@ -1,22 +1,35 @@
 # aitarotreader
-use chatgpt to interpret tarot cards
+Use ChatGPT to interpret tarot cards.
 
-Get your api key for free from https://platform.openai.com/account/api-keys
+## usage
+Get your API key for free from OpenAI: https://platform.openai.com/account/api-keys
 
-Edit reader.py and input your api key before running the program.
+Create a file named `.key` that contains your API key in the same directory as the script.
 
-chmod u+x reader.py
+```python3 reading.py```
 
-python3 reader.py
+Enjoy. :~) 
 
-enjoy :-) 
+Example:
+```>python ./reading.py
 
-example:
+Welcome to your personal tarot reader.
 
-Card Draw:
-Card 1: The Hierophant
-Card 2: Knight of Pentacles
-Card 3: Ace of Cups
+How many cards would you like to draw?
+        3
 
-Interpretation:
-The Hierophant indicates that you are being asked to look at what is accepted and traditional, and to consider the value of learning from a mentor or guide. The Knight of Pentacles is a sign of hard work and dedication to a project, showing that you need to be patient and steady in your approach. Finally, the Ace of Cups indicates that a new emotion or feeling will come into your life, bringing with it a sense of joy, love, and contentment.
+What is your query?
+        Will I be ok?
+
+Card 1: The Magician (reversed)
+
+Card 2: The Tower (reversed)
+
+Card 3: King of Pentacles
+
+This reading suggests that you may be feeling stuck and overwhelmed by your current situation.
+To move forward, focus on taking practical steps to organize your life and seek stability.
+Motivation: Clarity, Discipline, Security.
+
+Please take care.
+```
