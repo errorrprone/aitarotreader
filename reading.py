@@ -37,7 +37,7 @@ def generate_interpretation(query, cards):
         Here is a brief interpretation of this reading in under 100 words, including 3 single-word motivations.'
     prompt = prompt_basis%(query, ", ".join(cards))
 
-    max_tokens = max(100 * len(cards), 400)
+    max_tokens = min(100 * len(cards), 400)
     
     response = openai.Completion.create(
         engine="text-davinci-003",
