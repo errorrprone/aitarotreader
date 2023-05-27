@@ -6,7 +6,7 @@ Get your API key for free from OpenAI: https://platform.openai.com/account/api-k
 
 Create a file named `.key` that contains your API key in the same directory as the script.
 
-```python3 reader.py```
+```python3 reading.py```
 
 Enjoy. :~) 
 
