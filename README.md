@@ -1,5 +1,5 @@
 # aitarotreader
-use chatgpt to interpret tarot cards
+use open ai of your choice to interpret tarot cards. You can change the ai from davinci to something else if you prefer.
 
 Get your api key for free from https://platform.openai.com/account/api-keys
 
