@@ -1,22 +1,40 @@
-#!/usr/bin/python3
 #lets get a tarot reading from an ai
 
 import random
 import openai
+from config import API_KEY
 
-# Set up OpenAI API credentials
-openai.api_key = 'YOUR_OPENAI_API_KEY'
+# Set up OpenAI API credentials. Please modify the config file to include your api key. Do not put the key in this file.                                                     
+openai.api_key = API_KEY
 
-# Prompt for tarot card draw
-prompt = """
-You are about to pull three tarot cards from an entire tarot deck. Please focus on your question or situation.
-
-Card 1:
-Card 2:
-Card 3:
-
-Interpretation:
+# Prompt for tarot card draw                                                                                                                                                 
+question = input("Enter your question or situation: ")
+prompt = f"""                                                                                                                                                                
+You are about to pull three tarot cards from an entire tarot deck. Please focus on your question or situation.                                                               
+                                                                                                                                                                             
+Card 1:                                                                                                                                                                      
+Card 2:                                                                                                                                                                      
+Card 3:                                                                                                                                                                      
+                                                                                                                                                                             
+Interpretation:                                                                                                                                                              
+{question}                                                                                                                                                                   
 """
+
+# Generate interpretation using ChatGPT                                                                                                                                      
+def generate_interpretation(cards):
+    response = openai.Completion.create(
+        engine="text-davinci-003",
+        prompt=prompt + "\n".join(cards),
+        max_tokens=300,
+        n=1,
+        stop=None,
+        temperature=0.7,
+        top_p=1.0,
+        frequency_penalty=0.0,
+        presence_penalty=0.0
+    )
+    return response.choices[0].text.strip()
+
 
 # Generate interpretation using ChatGPT
 def generate_interpretation(cards):
