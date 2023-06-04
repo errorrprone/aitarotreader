@@ -1,26 +1,23 @@
-#lets get a tarot reading from an ai
-
 import random
 import openai
+import time
 from config import API_KEY
 
-# Set up OpenAI API credentials. Please modify the config file to include your api key. Do not put the key in this file.                                                     
+# Set up OpenAI API credentials. Please modify the config file to include your api key. Do not put the key in this file.
 openai.api_key = API_KEY
 
-# Prompt for tarot card draw                                                                                                                                                 
 question = input("Enter your question or situation: ")
-prompt = f"""                                                                                                                                                                
-You are about to pull three tarot cards from an entire tarot deck. Please focus on your question or situation.                                                               
-                                                                                                                                                                             
-Card 1:                                                                                                                                                                      
-Card 2:                                                                                                                                                                      
-Card 3:                                                                                                                                                                      
-                                                                                                                                                                             
-Interpretation:                                                                                                                                                              
-{question}                                                                                                                                                                   
+prompt = f"""
+You are about to pull three tarot cards from an entire tarot deck. Please focus on your question or situation.
+
+Card 1:
+Card 2:
+Card 3:
+
+Interpretation:
+{question}
 """
 
-# Generate interpretation using ChatGPT                                                                                                                                      
 def generate_interpretation(cards):
     response = openai.Completion.create(
         engine="text-davinci-003",
@@ -35,23 +32,6 @@ def generate_interpretation(cards):
     )
     return response.choices[0].text.strip()
 
-
-# Generate interpretation using ChatGPT
-def generate_interpretation(cards):
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=prompt + "\n".join(cards),
-        max_tokens=300,
-        n=1,
-        stop=None,
-        temperature=0.7,
-        top_p=1.0,
-        frequency_penalty=0.0,
-        presence_penalty=0.0
-    )
-    return response.choices[0].text.strip()
-
-# Full deck of tarot cards
 tarot_deck = [
     "The Fool", "The Magician", "The High Priestess", "The Empress", "The Emperor", "The Hierophant",
     "The Lovers", "The Chariot", "Strength", "The Hermit", "Wheel of Fortune", "Justice", "The Hanged Man",
@@ -69,15 +49,19 @@ tarot_deck = [
     "King of Pentacles"
 ]
 
-# Prompt user to pull three tarot cards
 cards = random.sample(tarot_deck, 3)
 
-# Generate interpretation
 interpretation = generate_interpretation(cards)
 
-# Print the card draw and interpretation
 print("Card Draw:")
 for i, card in enumerate(cards):
-    print(f"Card {i+1}: {card}")
+    print(f"Card {i+1}: ", end='', flush=True)
+    for letter in card:
+        print(letter, end='', flush=True)
+        time.sleep(0.1)  # Delay between letters (adjust as needed)
+    print()
+
 print("\nInterpretation:")
-print(interpretation)
+for letter in interpretation:
+    print(letter, end='', flush=True)
+    time.sleep(0.1) # Delay between letters adjust as needed
