@@ -21,7 +21,7 @@ def generate_interpretation(cards):
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt=prompt + "\n".join(cards),
-        max_tokens=300,
+        max_tokens=300, # adjust the level of tokens as needed. If you pull more cards more tokens needed
         n=1,
         stop=None,
         temperature=0.7,
@@ -48,7 +48,7 @@ tarot_deck = [
     "King of Pentacles"
 ]
 
-cards = random.sample(tarot_deck, 3)
+cards = random.sample(tarot_deck, 3) # can adjust number of cards but more tokens needed
 
 interpretation = generate_interpretation(cards)
 
