@@ -1,4 +1,3 @@
-import random
 import openai
 import time
 from config import API_KEY
@@ -16,6 +15,12 @@ Card 3:
 Interpretation:
 {question}
 """
+
+def fisher_yates_shuffle(arr): # I chose the Fisher Yates shuffling algorithm over using random. Feel freet to add your own.
+    for i in range(len(arr)-1, 0, -1):
+        j = random.randint(0, i+1)
+        arr[i], arr[j] = arr[j], arr[i]
+    return arr
 
 def generate_interpretation(cards):
     response = openai.Completion.create(
@@ -48,7 +53,8 @@ tarot_deck = [
     "King of Pentacles"
 ]
 
-cards = random.sample(tarot_deck, 3) # can adjust number of cards but more tokens needed
+fisher_yates_shuffle(tarot_deck)
+cards = tarot_deck[:3]  # choose first three shuffled cards
 
 interpretation = generate_interpretation(cards)
 
@@ -57,10 +63,10 @@ for i, card in enumerate(cards):
     print(f"Card {i+1}: ", end='', flush=True)
     for letter in card:
         print(letter, end='', flush=True)
-        time.sleep(0.1)  # Delay between letters (adjust as needed)
+        time.sleep(0.1)  # Delay between letters adjust as needed from 0.1 to whatever
     print()
 
 print("\nInterpretation:")
 for letter in interpretation:
     print(letter, end='', flush=True)
-    time.sleep(0.1) # Delay between letters adjust as needed
+    time.sleep(0.1) # Delay between letters adjust number as needed from 0.1 to whatever
