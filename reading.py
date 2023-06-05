@@ -1,5 +1,6 @@
 import openai
 import time
+import random
 from config import API_KEY
 
 # Set up OpenAI API credentials. Please modify the config file to include your api key. Do not put the key in this file.
