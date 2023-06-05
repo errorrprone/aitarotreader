@@ -4,12 +4,13 @@ use open ai of your choice to interpret tarot cards. You can change the ai from 
 Get your api key for free from https://platform.openai.com/account/api-keys
 
 Create config.py in the same directory as the reader script and place the following lines in the file:
-# config.py
+config.py
 API_KEY = 'YOUR_OPENAI_API_KEY'
 
+Then run the program in the terminal. 
 python3 reader.py
 
-enjoy :-) 
+You'll need to have a network connection to make the script work. 
 
 example:
 
