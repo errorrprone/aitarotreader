@@ -8,7 +8,7 @@ openai.api_key = API_KEY
 
 question = input("Enter your question or situation: ")
 prompt = f"""
-You are about to pull three tarot cards from an entire tarot deck. Please focus on your question or situation.
+Please focus on your question and prepare to pull three tarot cards. 
 
 Card 1:
 Card 2:
