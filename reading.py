@@ -5,7 +5,6 @@ from config import API_KEY
 
 # Set up OpenAI API credentials. Please modify the config file to include your api key. Do not put the key in this file.
 openai.api_key = API_KEY
-data_usage_agreement = 'agreed'  # setting the data_usage_agreement to 'agreed' to prevent open ai from storing your question/interpretation
 
 question = input("Enter your question or situation: ")
 prompt = f"""
@@ -28,7 +27,6 @@ def generate_interpretation(cards):
     response = openai.Completion.create(
         engine="text-davinci-003",
         prompt=prompt + "\n".join(cards),
-        data_usage_agreement=data_usage_agreement,
         max_tokens=300, # adjust the level of tokens as needed. If you pull more cards more tokens needed
         n=1,
         stop=None,
