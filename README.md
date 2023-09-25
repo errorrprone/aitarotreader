@@ -14,11 +14,11 @@ You'll need to have a network connection to make the script work.
 
 example:
 
-Enter your question or situation: Am I going to get a better job making more money?
+Enter your question or situation: why do I love pickles?
 Card Draw:
-Card 1: The Empress
-Card 2: The Hanged Man
-Card 3: King of Swords
+Card 1: Ten of Wands
+Card 2: Seven of Swords
+Card 3: King of Pentacles
 
 Interpretation:
-This combination of cards suggests that your situation is likely to improve. The Empress speaks of abundance, comfort, and success, while the Hanged Man indicates that a new perspective or a change in attitude is needed in order to move forward. Finally, the King of Swords shows that you will need to take a logical and disciplined approach to achieving your goal. With hard work and determination, you will be able to find success and financial stability.
+This reading suggests that your love of pickles stems from a need for structure and stability. The Ten of Wands suggests that you value the reliability of pickles as a comforting presence in your life, while the Seven of Swords indicates that you have found a sense of security in the way that pickles remain unchanged. Finally, the King of Pentacles suggests that you have found a sense of financial and material abundance in your love of pickles, as they provide a consistent source of sustenance and enjoyment.
