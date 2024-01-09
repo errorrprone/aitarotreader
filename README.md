@@ -14,11 +14,11 @@ You'll need to have a network connection to make the script work.
 
 example:
 
-Enter your question or situation: why do I love pickles?
+Enter your question or situation: what will my dreams be like tonight?
 Card Draw:
-Card 1: Ten of Wands
-Card 2: Seven of Swords
-Card 3: King of Pentacles
+Card 1: Judgement
+Card 2: The Hanged Man
+Card 3: The Tower
 
 Interpretation:
-This reading suggests that your love of pickles stems from a need for structure and stability. The Ten of Wands suggests that you value the reliability of pickles as a comforting presence in your life, while the Seven of Swords indicates that you have found a sense of security in the way that pickles remain unchanged. Finally, the King of Pentacles suggests that you have found a sense of financial and material abundance in your love of pickles, as they provide a consistent source of sustenance and enjoyment.
+This combination of cards suggests that your dreams tonight may be intense and transformative. The Judgement card indicates that your subconscious may be processing past experiences and making judgments about your life. The Hanged Man suggests that you may feel suspended or stuck in your dreams, as if you are being forced to see things from a different perspective. The Tower card indicates unexpected change or upheaval, which may manifest in your dreams as chaos or destruction. Overall, these cards suggest that your dreams tonight may be unsettling, but also offer the opportunity for growth and self-reflection. Pay attention to any insights or revelations that come up in your dreams, as they may hold valuable lessons for you
