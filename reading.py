@@ -25,7 +25,7 @@ def fisher_yates_shuffle(arr): # I chose the Fisher Yates shuffling algorithm ov
 
 def generate_interpretation(cards):
     response = openai.Completion.create(
-        engine="text-davinci-003",
+        engine="gpt-3.5-turbo-instruct",
         prompt=prompt + "\n".join(cards),
         max_tokens=300, # adjust the level of tokens as needed. If you pull more cards more tokens needed
         n=1,
